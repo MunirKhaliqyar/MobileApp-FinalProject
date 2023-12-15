@@ -47,4 +47,6 @@
     <string name="from">From:</string>
     <string name="to">To:</string>
     <string name="search">Search</string>
+    <string name="back">Back</string>
+    <string name="book">Book</string>
 </resources>
