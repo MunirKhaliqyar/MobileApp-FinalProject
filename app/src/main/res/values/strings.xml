@@ -43,4 +43,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+    <string name="search">Search</string>
 </resources>

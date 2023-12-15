@@ -35,7 +35,7 @@
             android:id="@+id/fromLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="From:"
+            android:text="@string/from"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/fromEditText"
@@ -45,7 +45,7 @@
             android:id="@+id/fromEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="DD/MM/YYYY"
+            android:hint="@string/dd_mm_yyyy"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/fromButton" />
 
@@ -70,7 +70,7 @@
             android:id="@+id/toLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To:"
+            android:text="@string/to"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/toEditText"
@@ -80,7 +80,7 @@
             android:id="@+id/toEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="DD/MM/YYYY"
+            android:hint="@string/dd_mm_yyyy"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/toButton"/>
 
@@ -97,7 +97,7 @@
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
+        android:text="@string/search"
         app:layout_constraintTop_toBottomOf="@id/toContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
