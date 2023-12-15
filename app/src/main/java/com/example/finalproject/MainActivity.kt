@@ -32,6 +32,12 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        // Assuming searchButton is in the MainActivity layout
+        binding.searchButton.setOnClickListener {
+            // Handle the click event here
+            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
