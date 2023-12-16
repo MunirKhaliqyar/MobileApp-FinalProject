@@ -49,4 +49,7 @@
     <string name="search">Search</string>
     <string name="back">Back</string>
     <string name="book">Book</string>
+    <string name="roomBooked1">Room 1</string>
+    <string name="roomBooked2">Room 2</string>
+    <string name="roomBooked3">Room 3</string>
 </resources>
