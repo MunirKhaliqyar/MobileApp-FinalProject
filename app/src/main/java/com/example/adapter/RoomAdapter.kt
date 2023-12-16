@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
-import com.example.model.room
+import com.example.model.Room
 
 /**
  * Adapter for the [RecyclerView] in [MainActivity]. Displays [Room] data object.
  */
 class RoomAdapter(
     private val context: Context,
-    private val dataset: List<room>
+    private val dataset: List<Room>
 ) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
     // Provide a reference to the views for each data item

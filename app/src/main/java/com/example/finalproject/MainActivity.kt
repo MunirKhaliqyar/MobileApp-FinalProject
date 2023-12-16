@@ -8,6 +8,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adapter.RoomAdapter
+import com.example.data.Datasource
 import com.example.finalproject.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,6 +25,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Initialize data.
+        val myDataset = Datasource().loadAvailableRoom()
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.adapter = RoomAdapter(this, myDataset)
+        recyclerView.setHasFixedSize(true)
+
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
