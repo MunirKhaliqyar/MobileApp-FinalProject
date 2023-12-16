@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
@@ -22,7 +23,8 @@ class RoomAdapter(
     // you provide access to all the views for a data item in a view holder.
     // Each data item is just an Room object.
     class RoomViewHolder(private val view: View): RecyclerView.ViewHolder(view){
-        val cardView: TextView = view.findViewById(R.id.cardText)
+        val textView: TextView = view.findViewById(R.id.item_title)
+        val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
     /**
@@ -30,8 +32,7 @@ class RoomAdapter(
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomViewHolder {
         // create a new view
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.room_layout, parent, false)
-
+        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
         return RoomViewHolder(adapterLayout)
     }
 
@@ -47,7 +48,8 @@ class RoomAdapter(
      */
     override fun onBindViewHolder(holder: RoomViewHolder, position: Int) {
         val room = dataset[position]
-        holder.cardView.text = context.resources.getString(room.stringResourceId)
+        holder.textView.text = context.resources.getString(room.stringResourceId)
+        holder.imageView.setImageResource(room.imageResourceId)
         TODO("Not yet implemented")
     }
 }

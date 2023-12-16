@@ -1,4 +1,9 @@
 package com.example.model
 
-data class Room (val stringResourceId: Int){
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+
+data class Room (
+    @StringRes val stringResourceId: Int,
+    @DrawableRes val imageResourceId: Int){
 }

@@ -49,7 +49,10 @@
     <string name="search">Search</string>
     <string name="back">Back</string>
     <string name="book">Book</string>
-    <string name="roomBooked1">Room 1</string>
-    <string name="roomBooked2">Room 2</string>
-    <string name="roomBooked3">Room 3</string>
+    <string name="room1">Room 1 afdadf</string>
+    <string name="room2">Room 2 adfaf</string>
+    <string name="room3">Room 3 adfadva</string>
+    <string name="room4">Room 4 adfadva</string>
+    <string name="room5">Room 5 adfadva</string>
+    <string name="room6">Room 6 adfadva</string>
 </resources>
