@@ -1,7 +1,7 @@
 package com.example.data
 
 import com.example.finalproject.R
-import com.example.model.Room
+import com.example.data.database.entities.Room
 
 class Datasource {
     fun loadAvailableRoom(): List<Room> {

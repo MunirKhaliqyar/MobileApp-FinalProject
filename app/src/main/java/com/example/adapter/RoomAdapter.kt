@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
-import com.example.model.Room
+import com.example.data.database.entities.Room
 
 /**
  * Adapter for the [RecyclerView] in [MainActivity]. Displays [Room] data object.
