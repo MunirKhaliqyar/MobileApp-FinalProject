@@ -11,8 +11,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.adapter.RoomAdapter
 import com.example.data.Datasource
 import com.example.finalproject.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
@@ -31,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         //Initialize data.
         val myDataset = Datasource().loadAvailableRoom()
 
-        val recyclerView = findViewById<RecyclerView>(R.id.nav_host_fragment_content_main)
-        recyclerView.adapter = RoomAdapter(this, myDataset)
+        //val recyclerView = findViewById<RecyclerView>(R.id.nav_host_fragment_content_main)
+        //recyclerView.adapter = RoomAdapter(this, myDataset)
         //recyclerView.setHasFixedSize(true)
 
         // Use this setting to improve performance if you know that changes

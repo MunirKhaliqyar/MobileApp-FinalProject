@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.data.Room
+import com.example.data.database.entities.RoomEntity
 import com.example.finalproject.R
-import com.example.data.database.entities.Room
 
 /**
- * Adapter for the [RecyclerView] in [MainActivity]. Displays [Room] data object.
+ * Adapter for the [RecyclerView] in [MainActivity]. Displays [RoomEntity] data object.
  */
 class RoomAdapter(
     private val context: Context,

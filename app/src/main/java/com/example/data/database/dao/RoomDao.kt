@@ -6,16 +6,16 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.data.database.entities.Booking
-import com.example.data.database.entities.Room
+import com.example.data.database.entities.RoomEntity
 
 @Dao
 interface RoomDao {
     @Query("SELECT * FROM Room")
-    suspend fun getAll(): List<Room>
+    suspend fun getAll(): List<RoomEntity>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(room: Room)
+    suspend fun insert(roomEntity: RoomEntity)
     @Delete()
-    suspend fun delete(room: Room)
+    suspend fun delete(roomEntity: RoomEntity)
     @Query("SELECT * FROM Room WHERE RoomId = :id")
     suspend fun getRoomById(id: String): Booking
 }

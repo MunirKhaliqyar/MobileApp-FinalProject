@@ -9,7 +9,7 @@ import java.util.Date
     tableName = "Booking",
     foreignKeys = [
         ForeignKey(
-            entity = Room::class,
+            entity = RoomEntity::class,
             parentColumns = ["RoomId"],
             childColumns = ["RoomId"],
             onDelete = ForeignKey.CASCADE // Specify the desired onDelete action
