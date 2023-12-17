@@ -12,6 +12,11 @@ import com.example.finalproject.databinding.FragmentSecondBinding
  */
 class SecondFragment : Fragment() {
 
+    companion object{
+        const val fromDate = "01/01/2024"
+        const val toDate = "02/01/2024"
+    }
+
     private var _binding: FragmentSecondBinding? = null
 
     // This property is only valid between onCreateView and
