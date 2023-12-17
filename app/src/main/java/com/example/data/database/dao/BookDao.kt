@@ -9,12 +9,12 @@ import com.example.data.database.entities.Booking
 
 @Dao
 interface BookDao {
-    @Query("SELECT * FROM Booking")
+    @Query("SELECT * FROM Booking ORDER BY ArriveDate DESC")
     fun getAll(): List<Booking>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(booking: Booking)
     @Delete()
-    fun delete(room: Booking)
+    fun delete(booking: Booking)
     @Query("SELECT * FROM Booking WHERE BookingId = :id")
     fun getBookingById(id: String): Booking
 }
