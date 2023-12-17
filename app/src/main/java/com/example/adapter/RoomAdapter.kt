@@ -50,6 +50,5 @@ class RoomAdapter(
         val room = dataset[position]
         holder.textView.text = context.resources.getString(room.stringResourceId)
         holder.imageView.setImageResource(room.imageResourceId)
-        TODO("Not yet implemented")
     }
 }

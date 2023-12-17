@@ -1,6 +1,7 @@
 package com.example.finalproject
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         //Initialize data.
         val myDataset = Datasource().loadAvailableRoom()
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        val recyclerView = findViewById<RecyclerView>(R.id.nav_host_fragment_content_main)
         recyclerView.adapter = RoomAdapter(this, myDataset)
         //recyclerView.setHasFixedSize(true)
 
@@ -42,9 +43,16 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        binding.email.setOnClickListener { view ->
+            val emailIntent = Intent(Intent.ACTION_SENDTO)
+            emailIntent.data = Uri.parse("mailto:kingoftheworld45678@gmail.com")  // Only email apps should handle this
+
+            if (emailIntent.resolveActivity(packageManager) != null) {
+                startActivity(emailIntent)
+            } else {
+                // Handle the case where the device doesn't have an email app installed
+                Snackbar.make(view, "No email app installed", Snackbar.LENGTH_LONG).show()
+            }
         }
 
         // Assuming searchButton is in the MainActivity layout
