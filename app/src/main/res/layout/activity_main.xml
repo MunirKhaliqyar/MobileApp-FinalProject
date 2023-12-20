@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/from"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fromEditText"
+            app:layout_constraintBottom_toBottomOf="@id/fromEditText"
             app:layout_constraintEnd_toStartOf="@id/fromEditText"
             />
 
@@ -47,7 +47,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/dd_mm_yyyy"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/fromButton" />
+            app:layout_constraintEnd_toStartOf="@id/fromButton"
+            android:inputType="date"
+            android:maxLength="10" />
 
         <Button
             android:id="@+id/fromButton"
@@ -56,6 +58,13 @@
             app:layout_constraintTop_toTopOf="@id/fromEditText"
             app:layout_constraintBottom_toBottomOf="@id/fromEditText"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <CalendarView
+            android:id="@+id/fromCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fromEditText"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,8 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/to"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toEditText"
+            app:layout_constraintBottom_toBottomOf="@id/toEditText"
             app:layout_constraintEnd_toStartOf="@id/toEditText"
             />
 
@@ -82,14 +91,23 @@
             android:layout_height="wrap_content"
             android:hint="@string/dd_mm_yyyy"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/toButton"/>
+            app:layout_constraintEnd_toStartOf="@id/toButton"
+            android:inputType="date"
+            android:maxLength="10" />
 
         <Button
             android:id="@+id/toButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toEditText"
+            app:layout_constraintBottom_toBottomOf="@id/toEditText"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <CalendarView
+            android:id="@+id/toCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toEditText"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

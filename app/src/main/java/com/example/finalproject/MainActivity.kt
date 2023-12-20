@@ -4,8 +4,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.CalendarView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -53,10 +57,68 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val fromEditText = binding.fromEditText
+        val toEditText = binding.toEditText
+
+        fromEditText.addTextChangedListener(DateInputMask())
+        toEditText.addTextChangedListener(DateInputMask())
+
         // Assuming searchButton is in the MainActivity layout
         binding.searchButton.setOnClickListener {
-            // Handle the click event here
-            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+            if (isDateFormatValid(fromEditText.text.toString()) && isDateFormatValid(toEditText.text.toString())) {
+                // Handle the click event here
+                navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+            } else {
+                Snackbar.make(binding.root, "Input should be a valid date for both 'from' and 'to' dates", Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+        val fromCalendar = binding.fromCalendar
+        val toCalendar = binding.toCalendar
+        
+        val currentDate = System.currentTimeMillis() // Get the current date in milliseconds
+
+        fromCalendar.visibility = View.GONE
+        fromCalendar.minDate = currentDate
+
+        toCalendar.visibility = View.GONE
+        toCalendar.minDate = currentDate
+
+        binding.fromButton.setOnClickListener {
+            if (fromCalendar.visibility == View.VISIBLE) {
+                fromCalendar.visibility = View.GONE
+            } else {
+                fromCalendar.visibility = View.VISIBLE
+            }
+        }
+        binding.toButton.setOnClickListener {
+            if (toCalendar.visibility == View.VISIBLE) {
+                toCalendar.visibility = View.GONE
+            } else {
+                toCalendar.visibility = View.VISIBLE
+            }
+        }
+
+        fromCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            // Handle the date selection
+            val selectedDate = String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year)
+
+            // Update the EditText with the selected date
+            binding.fromEditText.setText(selectedDate)
+
+            // Hide the CalendarView
+            fromCalendar.visibility = View.GONE
+        }
+
+        toCalendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            // Handle the date selection
+            val selectedDate = String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year)
+
+            // Update the EditText with the selected date
+            toEditText.setText(selectedDate)
+
+            // Hide the CalendarView
+            toCalendar.visibility = View.GONE
         }
     }
 
@@ -85,5 +147,55 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    // Function to check if the input string is in the format DD/MM/YYYY
+    private fun isDateFormatValid(input: String): Boolean {
+        val regexPattern = """^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$""".toRegex()
+        return regexPattern.matches(input)
+    }
+}
+
+class DateInputMask : TextWatcher {
+
+    private var isRunning = false
+    private var isDeleting = false
+
+    override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
+        // No implementation needed
+    }
+
+    override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+        // No implementation needed
+    }
+
+    override fun afterTextChanged(editable: Editable?) {
+        if (isRunning || isDeleting) {
+            return
+        }
+
+        isRunning = true
+
+        // Remove existing slashes to avoid duplication
+        val cleanText = editable?.toString()?.replace("/", "") ?: ""
+        val formattedText = formatDateString(cleanText)
+
+        // Set the formatted text back to the EditText
+        editable?.replace(0, editable.length, formattedText)
+
+        isRunning = false
+    }
+
+    private fun formatDateString(input: String): String {
+        val formattedString = StringBuilder()
+
+        for (i in input.indices) {
+            if (i == 2 || i == 4) {
+                formattedString.append("/")
+            }
+            formattedString.append(input[i])
+        }
+
+        return formattedString.toString()
     }
 }
