@@ -9,9 +9,10 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CalendarView
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -66,8 +67,16 @@ class MainActivity : AppCompatActivity() {
         // Assuming searchButton is in the MainActivity layout
         binding.searchButton.setOnClickListener {
             if (isDateFormatValid(fromEditText.text.toString()) && isDateFormatValid(toEditText.text.toString())) {
-                // Handle the click event here
-                navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+                val activeFragment = supportFragmentManager.primaryNavigationFragment
+
+                if (activeFragment is NavHostFragment) {
+                    val childFragment = activeFragment.childFragmentManager.primaryNavigationFragment
+
+                    if (childFragment is HomeFragment) {
+                        childFragment.performSearch(navController, fromEditText.text.toString(), toEditText.text.toString())
+                    }
+                }
+
             } else {
                 Snackbar.make(binding.root, "Input should be a valid date for both 'from' and 'to' dates", Snackbar.LENGTH_LONG).show()
             }
@@ -75,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         val fromCalendar = binding.fromCalendar
         val toCalendar = binding.toCalendar
-        
+
         val currentDate = System.currentTimeMillis() // Get the current date in milliseconds
 
         fromCalendar.visibility = View.GONE
