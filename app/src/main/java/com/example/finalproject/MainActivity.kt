@@ -9,6 +9,9 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -127,6 +130,33 @@ class MainActivity : AppCompatActivity() {
 
             // Hide the CalendarView
             toCalendar.visibility = View.GONE
+        }
+
+        val spinner: Spinner = findViewById(R.id.roomTypeSpinner)
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.room_types_array,  // Array defined in res/values/strings.xml
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
+
+        // Set an item selection listener for the spinner
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // Handle the selected item
+                val selectedPlanet = parent.getItemAtPosition(position).toString()
+                // Do something with the selected item
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do something when nothing is selected
+            }
         }
     }
 

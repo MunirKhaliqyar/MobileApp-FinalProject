@@ -18,5 +18,9 @@ class ReceiptActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
+
+        binding.sendButton.setOnClickListener {
+            binding.emailEditText.text.clear()
+        }
     }
 }

@@ -57,4 +57,10 @@
     <string name="room6">Room 6 adfadva</string>
     <string name="send">Send</string>
     <string name="enter_email">Enter email</string>
+    <string-array name="room_types_array">
+        <item>Single</item>
+        <item>Double</item>
+        <item>Triple</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>
