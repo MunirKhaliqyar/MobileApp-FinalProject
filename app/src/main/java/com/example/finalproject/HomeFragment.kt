@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adapter.RoomAdapter
+import com.example.data.Datasource
 import com.example.finalproject.databinding.FragmentHomeBinding
 
 /**
@@ -26,6 +30,16 @@ class HomeFragment : Fragment() {
     ): View? {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        val datasource = Datasource()
+
+        // Inside your fragment
+        val recyclerView: RecyclerView = binding.homeRecyclerView
+        val layoutManager = LinearLayoutManager(requireContext())
+        val adapter = RoomAdapter(requireContext(), datasource.loadAvailableRoom())
+
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
 
         return binding.root
     }
