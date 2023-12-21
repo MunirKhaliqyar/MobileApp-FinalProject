@@ -39,8 +39,9 @@ class HomeFragment : Fragment() {
         // Inside your fragment
         val recyclerView: RecyclerView = binding.homeRecyclerView
         val layoutManager = LinearLayoutManager(requireContext())
-        val adapter = RoomAdapter(requireContext(), datasource.loadAllRooms()) {
+        val adapter = RoomAdapter(requireContext(), datasource.loadAllRooms()) { selectedRoom ->
             val intent = Intent(requireContext(), RoomActivity::class.java)
+            intent.putExtra("selectedRoom", selectedRoom)
             startActivity(intent)
         }
 
