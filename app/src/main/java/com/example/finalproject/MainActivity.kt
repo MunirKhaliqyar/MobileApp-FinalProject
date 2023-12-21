@@ -49,11 +49,17 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.email.setOnClickListener { view ->
-            val emailIntent = Intent(Intent.ACTION_SENDTO)
-            emailIntent.data = Uri.parse("mailto:kingoftheworld45678@gmail.com")  // Only email apps should handle this
+            val emailIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "message/rfc822"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("recipient@example.com"))
+                putExtra(Intent.EXTRA_SUBJECT, "subject of email")
+                putExtra(Intent.EXTRA_TEXT, "body of email")
+            }
+            //emailIntent.data = Uri.parse("mailto:kingoftheworld45678@gmail.com")  // Only email apps should handle this
+
 
             if (emailIntent.resolveActivity(packageManager) != null) {
-                startActivity(emailIntent)
+                startActivity(Intent.createChooser(emailIntent, "Send Email"))
             } else {
                 // Handle the case where the device doesn't have an email app installed
                 Snackbar.make(view, "No email app installed", Snackbar.LENGTH_LONG).show()

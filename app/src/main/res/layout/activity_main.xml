@@ -50,10 +50,11 @@
             android:inputType="date"
             android:maxLength="10" />
 
-        <Button
+        <ImageButton
             android:id="@+id/fromButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/baseline_calendar_month_24"
             app:layout_constraintTop_toTopOf="@id/fromEditText"
             app:layout_constraintBottom_toBottomOf="@id/fromEditText"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -93,10 +94,11 @@
             android:inputType="date"
             android:maxLength="10" />
 
-        <Button
+        <ImageButton
             android:id="@+id/toButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/baseline_calendar_month_24"
             app:layout_constraintTop_toTopOf="@id/toEditText"
             app:layout_constraintBottom_toBottomOf="@id/toEditText"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -118,7 +120,7 @@
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/search"
         app:layout_constraintTop_toBottomOf="@id/roomTypeSpinner"
