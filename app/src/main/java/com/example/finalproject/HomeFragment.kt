@@ -1,11 +1,14 @@
 package com.example.finalproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adapter.RoomAdapter
@@ -36,7 +39,10 @@ class HomeFragment : Fragment() {
         // Inside your fragment
         val recyclerView: RecyclerView = binding.homeRecyclerView
         val layoutManager = LinearLayoutManager(requireContext())
-        val adapter = RoomAdapter(requireContext(), datasource.loadAllRooms())
+        val adapter = RoomAdapter(requireContext(), datasource.loadAllRooms()) {
+            val intent = Intent(requireContext(), RoomActivity::class.java)
+            startActivity(intent)
+        }
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter

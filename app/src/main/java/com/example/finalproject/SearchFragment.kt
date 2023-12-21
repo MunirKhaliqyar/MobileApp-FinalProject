@@ -1,11 +1,13 @@
 package com.example.finalproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adapter.RoomAdapter
@@ -40,9 +42,13 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = binding.searchRecyclerView
+        // Inside your fragment
+        val recyclerView: RecyclerView = binding.searchRecyclerView
         val layoutManager = LinearLayoutManager(requireContext())
-        adapter = RoomAdapter(requireContext(), datasource.loadAllRooms())
+        val adapter = RoomAdapter(requireContext(), datasource.loadAllRooms()) {
+            val intent = Intent(requireContext(), RoomActivity::class.java)
+            startActivity(intent)
+        }
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter

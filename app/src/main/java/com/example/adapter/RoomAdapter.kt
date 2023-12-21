@@ -16,7 +16,8 @@ import com.example.finalproject.R
  */
 class RoomAdapter(
     private val context: Context,
-    private var dataset: List<Room>
+    private var dataset: List<Room>,
+    private val onItemClickListener: (Room) -> Unit
 ) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -33,7 +34,7 @@ class RoomAdapter(
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomViewHolder {
         // create a new view
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
+        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.fragment_room_card, parent, false)
         return RoomViewHolder(adapterLayout)
     }
 
@@ -51,6 +52,10 @@ class RoomAdapter(
         val room = dataset[position]
         holder.textView.text = context.resources.getString(room.stringResourceId)
         holder.imageView.setImageResource(room.imageResourceId)
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener.invoke(room)
+        }
     }
 
     fun updateDataset(newDataset: List<Room>) {
