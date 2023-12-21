@@ -16,7 +16,7 @@ import com.example.finalproject.R
  */
 class RoomAdapter(
     private val context: Context,
-    private val dataset: List<Room>
+    private var dataset: List<Room>
 ) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -51,5 +51,10 @@ class RoomAdapter(
         val room = dataset[position]
         holder.textView.text = context.resources.getString(room.stringResourceId)
         holder.imageView.setImageResource(room.imageResourceId)
+    }
+
+    fun updateDataset(newDataset: List<Room>) {
+        dataset = newDataset
+        notifyDataSetChanged()
     }
 }

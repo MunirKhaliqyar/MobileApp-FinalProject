@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         // Inside your fragment
         val recyclerView: RecyclerView = binding.homeRecyclerView
         val layoutManager = LinearLayoutManager(requireContext())
-        val adapter = RoomAdapter(requireContext(), datasource.loadAvailableRoom())
+        val adapter = RoomAdapter(requireContext(), datasource.loadAllRooms())
 
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter

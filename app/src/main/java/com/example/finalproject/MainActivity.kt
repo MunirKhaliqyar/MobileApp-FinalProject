@@ -15,11 +15,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.adapter.RoomAdapter
 import com.example.data.Datasource
-import com.example.data.Room
 import com.example.finalproject.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -35,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Initialize data.
-        val myDataset = Datasource().loadAvailableRoom()
+        val myDataset = Datasource().loadAllRooms()
 
         //val recyclerView = findViewById<RecyclerView>(R.id.nav_host_fragment_content_main)
         //recyclerView.adapter = RoomAdapter(this, myDataset)
