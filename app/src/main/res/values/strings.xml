@@ -55,4 +55,6 @@
     <string name="room4">Room 4 adfadva</string>
     <string name="room5">Room 5 adfadva</string>
     <string name="room6">Room 6 adfadva</string>
+    <string name="send">Send</string>
+    <string name="enter_email">Enter email</string>
 </resources>

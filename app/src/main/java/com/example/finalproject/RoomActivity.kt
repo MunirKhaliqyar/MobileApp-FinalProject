@@ -1,5 +1,6 @@
 package com.example.finalproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,6 +21,12 @@ class RoomActivity : AppCompatActivity() {
 
         binding.backButton.setOnClickListener {
             finish()
+        }
+
+        binding.bookButton.setOnClickListener {
+            // Navigate to ReceiptActivity
+            val intent = Intent(this, ReceiptActivity::class.java)
+            startActivity(intent)
         }
     }
 }
